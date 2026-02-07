@@ -1,6 +1,4 @@
-// METEORITE CON SCIA E STELLE
 const meteor = document.getElementById('meteor');
-const trail = document.getElementById('trail');
 const menu = document.getElementById('menu');
 const canvas = document.getElementById('background');
 const ctx = canvas.getContext('2d');
@@ -8,20 +6,16 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// METEORITE ANIMATION
+// METEORITE
 let meteorY = -100;
-let trailHeight = 0;
 
 function meteorFall() {
   if (meteorY < window.innerHeight / 2) {
     meteorY += 12;
-    trailHeight += 12;
     meteor.style.top = meteorY + 'px';
-    trail.style.height = trailHeight + 'px';
     requestAnimationFrame(meteorFall);
   } else {
     meteor.style.display = 'none';
-    trail.style.display = 'none';
     menu.classList.remove('hidden');
     spawnStars();
   }
@@ -39,7 +33,7 @@ function spawnStars() {
       size: Math.random() * 3 + 2,
       speed: Math.random() * 4 + 2
     });
-  }, 150);
+  }, 100);
 
   animateStars();
 }
@@ -75,7 +69,6 @@ function goBack() {
   menu.classList.remove('hidden');
 }
 
-// ADJUST CANVAS ON RESIZE
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
