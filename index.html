@@ -12,15 +12,14 @@
 
 <div id="meteor-container">
   <div id="meteor"></div>
+  <div id="buttons" class="hidden">
+    <button onclick="openDiscord()">🚀 Entra nel Discord</button>
+    <button onclick="showSection('about')">🔥 Chi siamo</button>
+    <button onclick="showSection('giveaway')">🎁 Giveaway</button>
+  </div>
 </div>
 
-<section id="menu" class="hidden">
-  <h1>NEON NEXUS</h1>
-  <button onclick="openDiscord()">🚀 Entra nel Discord</button>
-  <button onclick="showSection('about')">🔥 Chi siamo</button>
-  <button onclick="showSection('giveaway')">🎁 Giveaway</button>
-</section>
-
+<!-- PAGINA GIVEAWAY -->
 <section id="giveaway" class="hidden">
   <h2>🎁 GIVEAWAY</h2>
   <div class="cards">
@@ -36,20 +35,17 @@
   <button onclick="goBack()">⬅ Torna indietro</button>
 </section>
 
+<!-- PAGINA CHI SIAMO -->
 <section id="about" class="hidden">
   <h2>🔥 Chi siamo</h2>
   <p>
-    Neon Nexus è una community chill, attiva e piena di eventi.  
+    Neon Nexus è una community chill, attiva e piena di eventi.<br>
     Qui trovi persone tranquille, giveaway frequenti e un ambiente dove divertirsi senza tossicità.
   </p>
   <h3>📊 Members ora</h3>
-  <iframe
-    src="https://discord.com/widget?id=1468260289467388021&theme=dark"
-    width="350"
-    height="200"
-    allowtransparency="true"
-    frameborder="0"
-  ></iframe>
+  <div id="fake-widget">
+    <p style="font-size:24px; color:red;">👥 Membri: <span id="member-count">0</span></p>
+  </div>
   <button onclick="goBack()">⬅ Torna indietro</button>
 </section>
 
