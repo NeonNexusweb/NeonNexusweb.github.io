@@ -1,5 +1,5 @@
 const meteor = document.getElementById('meteor');
-const menu = document.getElementById('menu');
+const buttons = document.getElementById('buttons');
 const canvas = document.getElementById('background');
 const ctx = canvas.getContext('2d');
 
@@ -16,14 +16,14 @@ function meteorFall() {
     requestAnimationFrame(meteorFall);
   } else {
     meteor.style.display = 'none';
-    menu.classList.remove('hidden');
+    buttons.classList.remove('hidden'); // mostra pulsanti
     spawnStars();
   }
 }
 
 meteorFall();
 
-// STARS / METEORE
+// STARS / METEORE IN CADUTA
 let stars = [];
 function spawnStars() {
   setInterval(() => {
@@ -53,22 +53,39 @@ function animateStars() {
   requestAnimationFrame(animateStars);
 }
 
-// PULSANTI
+// NAVIGAZIONE SEZIONI
 function openDiscord() {
   window.open("https://discord.gg/3AYH9ff7Zq", "_blank");
 }
 
 function showSection(id) {
-  menu.classList.add('hidden');
+  document.getElementById('giveaway').classList.add('hidden');
+  document.getElementById('about').classList.add('hidden');
+  buttons.classList.add('hidden');
+
   document.getElementById(id).classList.remove('hidden');
+
+  // Contatore fake membri
+  if (id === 'about') {
+    let count = 0;
+    const target = 40;
+    const el = document.getElementById('member-count');
+    el.textContent = 0;
+    const interval = setInterval(() => {
+      count++;
+      el.textContent = count;
+      if (count >= target) clearInterval(interval);
+    }, 30);
+  }
 }
 
 function goBack() {
   document.getElementById('giveaway').classList.add('hidden');
   document.getElementById('about').classList.add('hidden');
-  menu.classList.remove('hidden');
+  buttons.classList.remove('hidden');
 }
 
+// ADJUST CANVAS ON RESIZE
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
