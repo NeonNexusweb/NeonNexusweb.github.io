@@ -5,29 +5,12 @@ body, html {
   width: 100%;
   height: 100%;
   font-family: Arial, sans-serif;
-  overflow-x: hidden;
   background: black;
+  overflow-x: hidden;
   color: white;
 }
 
-/* SEZIONI */
-section {
-  text-align: center;
-  margin: 50px 10px;
-}
-
-#menu.hidden, #giveaway.hidden, #about.hidden {
-  display: none;
-}
-
-h1 {
-  font-size: 50px;
-  color: red;
-  text-shadow: 0 0 25px red;
-  margin-bottom: 30px;
-}
-
-/* PULSANTI CENTRATI */
+/* PULSANTI */
 #buttons {
   position: fixed;
   top: 50%;
@@ -39,12 +22,9 @@ h1 {
   gap: 20px;
   z-index: 20;
 }
-#buttons.hidden {
-  display: none;
-}
+#buttons.hidden { display: none; }
 
 button {
-  margin: 15px;
   padding: 20px 40px;
   font-size: 20px;
   background: black;
@@ -62,30 +42,6 @@ button:hover {
   transform: scale(1.1);
 }
 
-/* CARDS GIVEAWAY */
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.card {
-  background: #111;
-  border: 2px solid red;
-  padding: 25px;
-  width: 250px;
-  box-shadow: 0 0 20px red;
-  animation: pulse 2s infinite;
-  border-radius: 10px;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 10px red; }
-  50% { box-shadow: 0 0 30px red; }
-  100% { box-shadow: 0 0 10px red; }
-}
-
 /* METEORITE */
 #meteor-container {
   position: fixed;
@@ -101,30 +57,10 @@ button:hover {
   background: radial-gradient(circle, #ff0000 0%, #880000 70%);
   border-radius: 50%;
   box-shadow: 0 0 50px red, 0 0 100px orange;
-  position: relative;
-  z-index: 10;
   animation: glow 1s infinite alternate;
 }
 
 @keyframes glow {
   0% { box-shadow: 0 0 40px red, 0 0 80px orange; transform: scale(1); }
   100% { box-shadow: 0 0 60px red, 0 0 120px orange; transform: scale(1.1); }
-}
-
-/* WIDGET FAKE */
-#fake-widget {
-  background: #111;
-  padding: 20px;
-  margin: 20px auto;
-  width: 200px;
-  border-radius: 10px;
-  border: 2px solid red;
-  box-shadow: 0 0 15px red;
-}
-
-/* RESPONSIVE */
-@media (max-width: 500px) {
-  h1 { font-size: 40px; }
-  button { font-size: 18px; padding: 15px 25px; }
-  .card { width: 90%; }
 }
