@@ -2,24 +2,50 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>NeoNexus</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>Neon Nexus</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="blue">
+<body>
 
-<canvas id="bg"></canvas>
+<div id="meteor"></div>
 
-<div class="center">
-  <h1>NEONEXUS</h1>
-  <p>Il futuro ha un server.</p>
+<section id="menu" class="hidden">
+  <h1>NEON NEXUS</h1>
 
-  <a href="about.html" class="btn">⚡ Il Server</a>
-  <a href="giveaway.html" class="btn red">🎁 Giveaway 50€</a>
-  <a href="https://discord.gg/invite/neonnexus" target="_blank" class="btn discord">
-    🚀 Discord
-  </a>
-</div>
+  <button onclick="openDiscord()">🚀 Entra nel Discord</button>
+  <button onclick="showSection('giveaway')">🎁 Giveaway</button>
+  <button onclick="showSection('about')">🔥 Chi siamo</button>
+</section>
 
-<script src="./blue.js"></script>
+<section id="giveaway" class="hidden">
+  <h2>🎁 GIVEAWAY</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>75 Players</h3>
+      <p>Giveaway esclusivo per la community</p>
+    </div>
+
+    <div class="card">
+      <h3>300 Players</h3>
+      <p>🎉 50€ Amazon 🎉</p>
+    </div>
+  </div>
+
+  <button onclick="goBack()">⬅ Torna indietro</button>
+</section>
+
+<section id="about" class="hidden">
+  <h2>🔥 Chi siamo</h2>
+  <p>
+    Neon Nexus è una community chill, attiva e piena di eventi.
+    Qui trovi persone tranquille, giveaway frequenti e un ambiente
+    dove divertirsi senza tossicità.
+  </p>
+
+  <button onclick="goBack()">⬅ Torna indietro</button>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
