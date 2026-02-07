@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Neon Nexus</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Nexus</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="meteor"></div>
+<canvas id="background"></canvas>
+
+<div id="meteor-container">
+  <div id="meteor"></div>
+  <div id="trail"></div>
+</div>
 
 <section id="menu" class="hidden">
   <h1>NEON NEXUS</h1>
-
   <button onclick="openDiscord()">🚀 Entra nel Discord</button>
   <button onclick="showSection('giveaway')">🎁 Giveaway</button>
   <button onclick="showSection('about')">🔥 Chi siamo</button>
@@ -19,30 +24,33 @@
 
 <section id="giveaway" class="hidden">
   <h2>🎁 GIVEAWAY</h2>
-
   <div class="cards">
     <div class="card">
       <h3>75 Players</h3>
       <p>Giveaway esclusivo per la community</p>
     </div>
-
     <div class="card">
       <h3>300 Players</h3>
       <p>🎉 50€ Amazon 🎉</p>
     </div>
   </div>
-
   <button onclick="goBack()">⬅ Torna indietro</button>
 </section>
 
 <section id="about" class="hidden">
   <h2>🔥 Chi siamo</h2>
   <p>
-    Neon Nexus è una community chill, attiva e piena di eventi.
-    Qui trovi persone tranquille, giveaway frequenti e un ambiente
-    dove divertirsi senza tossicità.
+    Neon Nexus è una community chill, attiva e piena di eventi.  
+    Qui trovi persone tranquille, giveaway frequenti e un ambiente dove divertirsi senza tossicità.
   </p>
-
+  <h3>📊 Members ora</h3>
+  <iframe
+    src="https://discord.com/widget?id=861234567890123456&theme=dark"
+    width="350"
+    height="200"
+    allowtransparency="true"
+    frameborder="0"
+  ></iframe>
   <button onclick="goBack()">⬅ Torna indietro</button>
 </section>
 
