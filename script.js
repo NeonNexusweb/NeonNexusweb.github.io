@@ -6,26 +6,29 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// METEORITE
+// METEORITE CADUTA
 let meteorY = -100;
 
 function meteorFall() {
   if (meteorY < window.innerHeight / 2) {
-    meteorY += 12;
+    meteorY += 12; // velocità caduta
     meteor.style.top = meteorY + 'px';
     requestAnimationFrame(meteorFall);
   } else {
     meteor.style.display = 'none';
-    buttons.classList.remove('hidden'); // mostra pulsanti
-    spawnStars();
+    showButtons();
+    startStars();
   }
 }
 
-meteorFall();
+function showButtons() {
+  buttons.classList.remove('hidden');
+}
 
-// STARS / METEORE IN CADUTA
+// STELLE / METEORE CADUTA INFINITA
 let stars = [];
-function spawnStars() {
+
+function startStars() {
   setInterval(() => {
     stars.push({
       x: Math.random() * canvas.width,
@@ -53,37 +56,7 @@ function animateStars() {
   requestAnimationFrame(animateStars);
 }
 
-// NAVIGAZIONE SEZIONI
-function openDiscord() {
-  window.open("https://discord.gg/3AYH9ff7Zq", "_blank");
-}
-
-function showSection(id) {
-  document.getElementById('giveaway').classList.add('hidden');
-  document.getElementById('about').classList.add('hidden');
-  buttons.classList.add('hidden');
-
-  document.getElementById(id).classList.remove('hidden');
-
-  // Contatore fake membri
-  if (id === 'about') {
-    let count = 0;
-    const target = 40;
-    const el = document.getElementById('member-count');
-    el.textContent = 0;
-    const interval = setInterval(() => {
-      count++;
-      el.textContent = count;
-      if (count >= target) clearInterval(interval);
-    }, 30);
-  }
-}
-
-function goBack() {
-  document.getElementById('giveaway').classList.add('hidden');
-  document.getElementById('about').classList.add('hidden');
-  buttons.classList.remove('hidden');
-}
+meteorFall();
 
 // ADJUST CANVAS ON RESIZE
 window.addEventListener('resize', () => {
