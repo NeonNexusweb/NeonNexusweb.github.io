@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Orbitron, sans-serif;
+  text-align: center;
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.blue {
+  background: linear-gradient(270deg, #000428, #004e92);
+  animation: bg 10s infinite alternate;
+}
+
+.red {
+  background: linear-gradient(270deg, #ff0000, #000000, #8b0000);
+  animation: bg 6s infinite alternate;
+}
+
+.dark {
+  background: linear-gradient(270deg, #000000, #111111);
+}
+
+@keyframes bg {
+  0% { background-position: 0%; }
+  100% { background-position: 100%; }
+}
+
+/* GLITCH */
+.glitch {
+  font-size: 4rem;
+  text-shadow: 0 0 20px cyan, 0 0 40px red;
+}
+
+.big {
+  font-size: 5rem;
+}
+
+.subtitle {
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+
+.text {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+.huge {
+  font-size: 2rem;
+}
+
+/* BOTTONI */
+.neon-btn {
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 35px;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 0 15px cyan;
+  transition: 0.3s;
+}
+
+.neon-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px cyan;
+}
+
+.neon-btn.red {
+  box-shadow: 0 0 20px red;
+}
+
+.neon-btn.discord {
+  background: #5865F2;
+  box-shadow: 0 0 25px #5865F2;
+}
+
+/* GIVEAWAY BOX */
+.giveaway-box {
+  border: 2px solid red;
+  margin: 30px auto;
+  padding: 20px;
+  width: 80%;
+  box-shadow: 0 0 30px red;
+}
+
+/* FOGLIE */
+.leaves span {
+  position: fixed;
+  top: -10%;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
