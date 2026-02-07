@@ -75,11 +75,11 @@ button:hover {
 }
 
 #meteor {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background: radial-gradient(circle, #ff0000 0%, #880000 70%);
   border-radius: 50%;
-  box-shadow: 0 0 40px red, 0 0 80px orange;
+  box-shadow: 0 0 50px red, 0 0 100px orange;
   position: relative;
   z-index: 10;
   animation: glow 1s infinite alternate;
