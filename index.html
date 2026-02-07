@@ -13,41 +13,11 @@
 <div id="meteor-container">
   <div id="meteor"></div>
   <div id="buttons" class="hidden">
-    <button onclick="openDiscord()">🚀 Entra nel Discord</button>
-    <button onclick="showSection('about')">🔥 Chi siamo</button>
-    <button onclick="showSection('giveaway')">🎁 Giveaway</button>
+    <button onclick="window.location='about.html'">🔥 Chi siamo</button>
+    <button onclick="window.location='giveaway.html'">🎁 Giveaway</button>
+    <button onclick="window.open('https://discord.gg/3AYH9ff7Zq','_blank')">🚀 Discord</button>
   </div>
 </div>
-
-<!-- PAGINA GIVEAWAY -->
-<section id="giveaway" class="hidden">
-  <h2>🎁 GIVEAWAY</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>75 Players</h3>
-      <p>Giveaway esclusivo per la community</p>
-    </div>
-    <div class="card">
-      <h3>300 Players</h3>
-      <p>🎉 50€ Amazon 🎉</p>
-    </div>
-  </div>
-  <button onclick="goBack()">⬅ Torna indietro</button>
-</section>
-
-<!-- PAGINA CHI SIAMO -->
-<section id="about" class="hidden">
-  <h2>🔥 Chi siamo</h2>
-  <p>
-    Neon Nexus è una community chill, attiva e piena di eventi.<br>
-    Qui trovi persone tranquille, giveaway frequenti e un ambiente dove divertirsi senza tossicità.
-  </p>
-  <h3>📊 Members ora</h3>
-  <div id="fake-widget">
-    <p style="font-size:24px; color:red;">👥 Membri: <span id="member-count">0</span></p>
-  </div>
-  <button onclick="goBack()">⬅ Torna indietro</button>
-</section>
 
 <script src="script.js"></script>
 </body>
