@@ -3,13 +3,14 @@ const meteor = document.getElementById("meteor");
 const buttons = document.createElement("div");
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
+
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 let meteorY = -100;
 let falling = true;
 
-// METEORITE + TESTO NEON
+// caduta meteorite
 function meteorFall() {
   if (!falling) return;
   meteorY += 14;
@@ -27,20 +28,24 @@ function meteorFall() {
 
 meteorFall();
 
-// BOTTONI HOME
+// crea bottoni + titolo sopra
 function createButtons() {
   buttons.className = "buttons";
   buttons.innerHTML = `
-    <button onclick="location.href='about.html'">🔥 Chi siamo</button>
-    <button onclick="location.href='giveaway.html'">🎁 Giveaway</button>
+    <div class="button-header">
+      <h1>NEON NEXUS</h1>
+      <p>Community</p>
+    </div>
+    <button onclick="location.href='./about.html'">☄️ Chi siamo</button>
+    <button onclick="location.href='./giveaway.html'">🎁 Giveaway</button>
     <button onclick="window.open('https://discord.gg/neonnexus','_blank')">🚀 Discord</button>
+    <button class="home-btn" onclick="location.href='./index.html'">⭮ Rientra nel Nexus</button>
   `;
   document.body.appendChild(buttons);
 }
 
-// STELLE CADENTI HOME
+// stelle cadenti home
 let stars = [];
-
 function startStars() {
   setInterval(() => {
     stars.push({
