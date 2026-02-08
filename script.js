@@ -1,7 +1,6 @@
 const meteorContainer = document.getElementById("meteor-container");
 const meteor = document.getElementById("meteor");
 const buttons = document.createElement("div");
-
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 canvas.width = innerWidth;
@@ -10,9 +9,9 @@ canvas.height = innerHeight;
 let meteorY = -100;
 let falling = true;
 
+// METEORITE + TESTO NEON
 function meteorFall() {
   if (!falling) return;
-
   meteorY += 14;
   meteorContainer.style.top = meteorY + "px";
 
@@ -28,6 +27,7 @@ function meteorFall() {
 
 meteorFall();
 
+// BOTTONI HOME
 function createButtons() {
   buttons.className = "buttons";
   buttons.innerHTML = `
@@ -38,7 +38,7 @@ function createButtons() {
   document.body.appendChild(buttons);
 }
 
-// STELLE CADENTI
+// STELLE CADENTI HOME
 let stars = [];
 
 function startStars() {
