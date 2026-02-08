@@ -1,4 +1,3 @@
-// Canvas per le particelle
 const canvas = document.querySelector(".falling-bg");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
