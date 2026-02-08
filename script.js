@@ -33,7 +33,7 @@ function createButtons() {
   buttons.innerHTML = `
     <button onclick="location.href='about.html'">🔥 Chi siamo</button>
     <button onclick="location.href='giveaway.html'">🎁 Giveaway</button>
-    <button onclick="window.open('https://discord.gg/3AYH9ff7Zq','_blank')">🚀 Discord</button>
+    <button onclick="window.open('https://discord.gg/neonnexus','_blank')">🚀 Discord</button>
   `;
   document.body.appendChild(buttons);
 }
