@@ -1,5 +1,4 @@
 const meteor = document.getElementById("meteor");
-const buttons = document.getElementById("buttons");
 
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
@@ -7,29 +6,39 @@ const ctx = canvas.getContext("2d");
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
-// -------- METEORITE --------
-let y = -80;
-let falling = true;
+// ---------- METEORITE ----------
+let y = -100;
 
-function meteorFall() {
-  if (!falling) return;
-
-  y += 12;
+function fall() {
+  y += 14;
   meteor.style.top = y + "px";
 
   if (y >= innerHeight / 2) {
-    falling = false;
-    meteor.remove();
-    buttons.style.display = "flex";
-    startStars();
+    meteor.remove();        // 💥 sparisce
+    createButtons();        // ✨ crea i bottoni
+    startStars();           // 🌠 stelle
   } else {
-    requestAnimationFrame(meteorFall);
+    requestAnimationFrame(fall);
   }
 }
 
-meteorFall();
+fall();
 
-// -------- STELLE --------
+// ---------- CREA BOTTONI ----------
+function createButtons() {
+  const box = document.createElement("div");
+  box.className = "buttons";
+
+  box.innerHTML = `
+    <button onclick="location.href='about.html'">🔥 Chi siamo</button>
+    <button onclick="location.href='giveaway.html'">🎁 Giveaway</button>
+    <button onclick="window.open('https://discord.gg/3AYH9ff7Zq','_blank')">🚀 Discord</button>
+  `;
+
+  document.body.appendChild(box);
+}
+
+// ---------- STELLE ----------
 let stars = [];
 
 function startStars() {
@@ -49,14 +58,14 @@ function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   for (let i = stars.length - 1; i >= 0; i--) {
-    const star = stars[i];
+    const s = stars[i];
     ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     ctx.fill();
 
-    star.y += star.s;
-    if (star.y > canvas.height) stars.splice(i, 1);
+    s.y += s.s;
+    if (s.y > canvas.height) stars.splice(i, 1);
   }
 
   requestAnimationFrame(animateStars);
