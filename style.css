@@ -14,27 +14,43 @@ html, body {
   overflow: hidden;
 }
 
-/* ===== BACKGROUND STELLE ===== */
-#stars {
+/* ===== CANVAS STELLE ===== */
+#stars, .falling-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 
 /* ===== METEORITE ===== */
-#meteor {
+#meteor-container {
   position: fixed;
-  top: -120px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
+}
+
+#meteor {
   width: 70px;
   height: 70px;
   border-radius: 50%;
   background: radial-gradient(circle, #ff2b2b 0%, #8b0000 70%);
-  box-shadow:
-    0 0 40px red,
-    0 0 90px crimson;
-  z-index: 2;
+  box-shadow: 0 0 40px red, 0 0 90px orange;
+  position: relative;
+}
+
+#meteor-text {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  color: red;
+  font-weight: bold;
+  text-shadow: 0 0 15px red;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 /* ===== BOTTONI HOME ===== */
@@ -42,7 +58,6 @@ html, body {
   position: fixed;
   inset: 0;
   z-index: 3;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,9 +72,7 @@ html, body {
   color: red;
   border: 2px solid red;
   border-radius: 16px;
-  box-shadow:
-    0 0 20px red,
-    inset 0 0 10px red;
+  box-shadow: 0 0 20px red, inset 0 0 12px red;
   cursor: pointer;
   transition: 0.25s ease;
 }
@@ -68,21 +81,25 @@ html, body {
   background: red;
   color: black;
   transform: scale(1.08);
-  box-shadow: 0 0 30px red;
+  box-shadow: 0 0 35px red;
 }
 
-/* ===== PAGINE SECONDARIE ===== */
+/* ===== PAGINE ABOUT / GIVEAWAY ===== */
 .page {
   position: relative;
+  width: 100%;
   min-height: 100vh;
-  padding: 80px 20px;
-  background:
-    radial-gradient(circle at top, #111 0%, #000 70%);
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
   text-align: center;
+  z-index: 1;
+  background: radial-gradient(circle at top, #111 0%, #000 70%);
 }
 
-/* ===== STELLE LENTE PAGINE ===== */
+/* STELLE LENTE PER ABOUT/GIVEAWAY */
 .page::before,
 .page::after {
   content: "";
@@ -117,13 +134,13 @@ html, body {
 
 .page h2 {
   color: red;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 /* ===== TESTI ===== */
 .page p {
   max-width: 620px;
-  margin: 0 auto 30px;
+  margin-bottom: 30px;
   font-size: 18px;
   line-height: 1.7;
   opacity: 0.9;
@@ -135,11 +152,9 @@ html, body {
   border: 2px solid red;
   border-radius: 18px;
   padding: 28px;
-  margin: 30px auto;
+  margin: 20px auto;
   max-width: 340px;
-  box-shadow:
-    0 0 25px red,
-    inset 0 0 10px red;
+  box-shadow: 0 0 25px red, inset 0 0 12px red;
   backdrop-filter: blur(6px);
 }
 
@@ -147,26 +162,29 @@ html, body {
 .members {
   font-size: 24px;
   color: red;
-  margin: 30px 0;
+  margin-bottom: 30px;
   text-shadow: 0 0 15px red;
 }
 
-/* ===== BOTTONI PAGINE ===== */
-.page button {
-  margin-top: 20px;
-  padding: 14px 34px;
+/* ===== BOTTONI HOME ===== */
+.home-btn {
+  margin-top: 40px;
+  padding: 16px 38px;
   font-size: 18px;
-  background: black;
+  letter-spacing: 1px;
+  background: radial-gradient(circle, #200 0%, #000 70%);
   color: red;
   border: 2px solid red;
-  border-radius: 14px;
-  box-shadow: 0 0 15px red;
+  border-radius: 999px;
+  box-shadow: 0 0 20px red, inset 0 0 12px red;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: 0.25s;
+  transition: 0.25s ease;
 }
 
-.page button:hover {
+.home-btn:hover {
   background: red;
   color: black;
-  transform: scale(1.05);
+  box-shadow: 0 0 35px red;
+  transform: scale(1.08);
 }
