@@ -4,24 +4,23 @@ const buttonsContainer = document.getElementById("buttons-container");
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
-// Imposta dimensione canvas
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let meteorY = -100; // posizione iniziale meteorite
+let meteorY = -100;
 let falling = true;
 
-// Animazione caduta meteorite
+// caduta meteorite
 function meteorFall() {
   if (!falling) return;
-  meteorY += 14; // velocità caduta
+  meteorY += 12; // velocità meteorite
   meteorContainer.style.top = meteorY + "px";
 
   if (meteorY >= innerHeight / 2) {
     falling = false;
-    meteorContainer.remove(); // rimuove meteorite
-    createButtons();          // mostra pulsanti
-    startStars();             // inizia caduta stelle
+    meteorContainer.remove();
+    showButtons();
+    startStars();
   } else {
     requestAnimationFrame(meteorFall);
   }
@@ -29,15 +28,11 @@ function meteorFall() {
 
 meteorFall();
 
-// Crea pulsanti dopo caduta meteorite
-function createButtons() {
+// mostra bottoni grandi e centrati
+function showButtons() {
   const div = document.createElement("div");
   div.className = "buttons";
   div.innerHTML = `
-    <div class="button-header">
-      <h1>NEON NEXUS</h1>
-      <p>Community</p>
-    </div>
     <button onclick="location.href='./about.html'">☄️ Chi siamo</button>
     <button onclick="location.href='./giveaway.html'">🎁 Giveaway</button>
     <button onclick="window.open('https://discord.gg/neonnexus','_blank')">🚀 Discord</button>
@@ -45,7 +40,7 @@ function createButtons() {
   buttonsContainer.appendChild(div);
 }
 
-// STELLE CADENTI HOME
+// stelle cadenti infinite
 let stars = [];
 function startStars() {
   setInterval(() => {
@@ -53,7 +48,7 @@ function startStars() {
       x: Math.random() * canvas.width,
       y: -10,
       r: Math.random() * 2 + 1,
-      s: Math.random() * 4 + 2
+      s: Math.random() * 3 + 2
     });
   }, 80);
   animateStars();
@@ -65,7 +60,7 @@ function animateStars() {
     const s = stars[i];
     ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
     ctx.fill();
     s.y += s.s;
     if (s.y > canvas.height) stars.splice(i, 1);
@@ -73,7 +68,6 @@ function animateStars() {
   requestAnimationFrame(animateStars);
 }
 
-// Aggiorna dimensione canvas al resize
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
