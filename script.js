@@ -1,11 +1,11 @@
 const meteorContainer = document.getElementById("meteor-container");
 const meteor = document.getElementById("meteor");
-const buttons = document.createElement("div");
+const buttonsContainer = document.getElementById("buttons-container");
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 let meteorY = -100;
 let falling = true;
@@ -28,10 +28,11 @@ function meteorFall() {
 
 meteorFall();
 
-// crea bottoni + titolo sopra
+// crea pulsanti con testo sopra
 function createButtons() {
-  buttons.className = "buttons";
-  buttons.innerHTML = `
+  const div = document.createElement("div");
+  div.className = "buttons";
+  div.innerHTML = `
     <div class="button-header">
       <h1>NEON NEXUS</h1>
       <p>Community</p>
@@ -41,10 +42,10 @@ function createButtons() {
     <button onclick="window.open('https://discord.gg/neonnexus','_blank')">🚀 Discord</button>
     <button class="home-btn" onclick="location.href='./index.html'">⭮ Rientra nel Nexus</button>
   `;
-  document.body.appendChild(buttons);
+  buttonsContainer.appendChild(div);
 }
 
-// stelle cadenti home
+// STELLE CADENTI HOME
 let stars = [];
 function startStars() {
   setInterval(() => {
@@ -73,6 +74,6 @@ function animateStars() {
 }
 
 window.addEventListener("resize", () => {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
