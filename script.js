@@ -1,44 +1,44 @@
+const meteorContainer = document.getElementById("meteor-container");
 const meteor = document.getElementById("meteor");
+const buttons = document.createElement("div");
 
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
-
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
-// ---------- METEORITE ----------
-let y = -100;
+let meteorY = -100;
+let falling = true;
 
-function fall() {
-  y += 14;
-  meteor.style.top = y + "px";
+function meteorFall() {
+  if (!falling) return;
 
-  if (y >= innerHeight / 2) {
-    meteor.remove();        // 💥 sparisce
-    createButtons();        // ✨ crea i bottoni
-    startStars();           // 🌠 stelle
+  meteorY += 14;
+  meteorContainer.style.top = meteorY + "px";
+
+  if (meteorY >= innerHeight / 2) {
+    falling = false;
+    meteorContainer.remove();
+    createButtons();
+    startStars();
   } else {
-    requestAnimationFrame(fall);
+    requestAnimationFrame(meteorFall);
   }
 }
 
-fall();
+meteorFall();
 
-// ---------- CREA BOTTONI ----------
 function createButtons() {
-  const box = document.createElement("div");
-  box.className = "buttons";
-
-  box.innerHTML = `
+  buttons.className = "buttons";
+  buttons.innerHTML = `
     <button onclick="location.href='about.html'">🔥 Chi siamo</button>
     <button onclick="location.href='giveaway.html'">🎁 Giveaway</button>
     <button onclick="window.open('https://discord.gg/3AYH9ff7Zq','_blank')">🚀 Discord</button>
   `;
-
-  document.body.appendChild(box);
+  document.body.appendChild(buttons);
 }
 
-// ---------- STELLE ----------
+// STELLE CADENTI
 let stars = [];
 
 function startStars() {
@@ -50,24 +50,20 @@ function startStars() {
       s: Math.random() * 4 + 2
     });
   }, 80);
-
   animateStars();
 }
 
 function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   for (let i = stars.length - 1; i >= 0; i--) {
     const s = stars[i];
     ctx.fillStyle = "white";
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
     ctx.fill();
-
     s.y += s.s;
     if (s.y > canvas.height) stars.splice(i, 1);
   }
-
   requestAnimationFrame(animateStars);
 }
 
