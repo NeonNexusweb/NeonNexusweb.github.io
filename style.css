@@ -12,7 +12,7 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
-/* STELLE */
+/* CANVAS STELLE */
 #stars {
   position: fixed;
   inset: 0;
@@ -22,22 +22,21 @@ html, body {
 /* METEORITE */
 #meteor {
   position: fixed;
-  top: -80px;
+  top: -100px;
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 60px;
   border-radius: 50%;
   background: radial-gradient(circle, red 0%, darkred 70%);
-  box-shadow: 0 0 30px red, 0 0 70px orange;
+  box-shadow: 0 0 40px red, 0 0 90px orange;
   z-index: 2;
 }
 
-/* BOTTONI */
-#buttons {
+/* BOTTONI (creati dopo) */
+.buttons {
   position: fixed;
   inset: 0;
-  display: none;
   z-index: 3;
 
   display: flex;
@@ -47,7 +46,7 @@ html, body {
   gap: 20px;
 }
 
-button {
+.buttons button {
   padding: 18px 40px;
   font-size: 20px;
   background: black;
@@ -55,8 +54,4 @@ button {
   border: 2px solid red;
   border-radius: 14px;
   box-shadow: 0 0 15px red;
-}
-
-button:active {
-  transform: scale(0.95);
 }
