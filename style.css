@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -8,32 +9,35 @@ html, body {
   width: 100%;
   height: 100%;
   background: black;
+  color: white;
+  font-family: 'Arial', sans-serif;
   overflow: hidden;
-  font-family: Arial, sans-serif;
 }
 
-/* CANVAS STELLE */
+/* ===== BACKGROUND STELLE ===== */
 #stars {
   position: fixed;
   inset: 0;
   z-index: 0;
 }
 
-/* METEORITE */
+/* ===== METEORITE ===== */
 #meteor {
   position: fixed;
-  top: -100px;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  background: radial-gradient(circle, red 0%, darkred 70%);
-  box-shadow: 0 0 40px red, 0 0 90px orange;
+  background: radial-gradient(circle, #ff2b2b 0%, #8b0000 70%);
+  box-shadow:
+    0 0 40px red,
+    0 0 90px crimson;
   z-index: 2;
 }
 
-/* BOTTONI (creati dopo) */
+/* ===== BOTTONI HOME ===== */
 .buttons {
   position: fixed;
   inset: 0;
@@ -43,15 +47,126 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
 }
 
 .buttons button {
-  padding: 18px 40px;
-  font-size: 20px;
+  padding: 20px 46px;
+  font-size: 22px;
+  background: rgba(0,0,0,0.8);
+  color: red;
+  border: 2px solid red;
+  border-radius: 16px;
+  box-shadow:
+    0 0 20px red,
+    inset 0 0 10px red;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.buttons button:hover {
+  background: red;
+  color: black;
+  transform: scale(1.08);
+  box-shadow: 0 0 30px red;
+}
+
+/* ===== PAGINE SECONDARIE ===== */
+.page {
+  position: relative;
+  min-height: 100vh;
+  padding: 80px 20px;
+  background:
+    radial-gradient(circle at top, #111 0%, #000 70%);
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* ===== STELLE LENTE PAGINE ===== */
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  inset: -200%;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 60%, white 50%, transparent 51%),
+    radial-gradient(2px 2px at 40% 80%, white 50%, transparent 51%);
+  background-size: 450px 450px;
+  animation: starsMove 80s linear infinite;
+  opacity: 0.18;
+}
+
+.page::after {
+  animation-duration: 120s;
+  opacity: 0.1;
+}
+
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to   { transform: translateY(50%); }
+}
+
+/* ===== TITOLI ===== */
+.page h1 {
+  font-size: 42px;
+  color: red;
+  text-shadow: 0 0 20px red;
+  margin-bottom: 25px;
+}
+
+.page h2 {
+  color: red;
+  margin-bottom: 10px;
+}
+
+/* ===== TESTI ===== */
+.page p {
+  max-width: 620px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: rgba(0,0,0,0.65);
+  border: 2px solid red;
+  border-radius: 18px;
+  padding: 28px;
+  margin: 30px auto;
+  max-width: 340px;
+  box-shadow:
+    0 0 25px red,
+    inset 0 0 10px red;
+  backdrop-filter: blur(6px);
+}
+
+/* ===== MEMBERS ===== */
+.members {
+  font-size: 24px;
+  color: red;
+  margin: 30px 0;
+  text-shadow: 0 0 15px red;
+}
+
+/* ===== BOTTONI PAGINE ===== */
+.page button {
+  margin-top: 20px;
+  padding: 14px 34px;
+  font-size: 18px;
   background: black;
   color: red;
   border: 2px solid red;
   border-radius: 14px;
   box-shadow: 0 0 15px red;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.page button:hover {
+  background: red;
+  color: black;
+  transform: scale(1.05);
 }
