@@ -1,31 +1,35 @@
-const meteor = document.getElementById('meteor');
-const buttons = document.getElementById('buttons');
-const canvas = document.getElementById('background');
-const ctx = canvas.getContext('2d');
+const meteor = document.getElementById("meteor");
+const buttons = document.getElementById("buttons");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
 
-// METEORITE CADUTA
-let meteorY = -100;
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+// -------- METEORITE --------
+let y = -80;
+let falling = true;
 
 function meteorFall() {
-  if (meteorY < window.innerHeight / 2) {
-    meteorY += 12; // velocità caduta
-    meteor.style.top = meteorY + 'px';
-    requestAnimationFrame(meteorFall);
-  } else {
-    meteor.style.display = 'none';
-    showButtons();
+  if (!falling) return;
+
+  y += 12;
+  meteor.style.top = y + "px";
+
+  if (y >= innerHeight / 2) {
+    falling = false;
+    meteor.remove();
+    buttons.style.display = "flex";
     startStars();
+  } else {
+    requestAnimationFrame(meteorFall);
   }
 }
 
-function showButtons() {
-  buttons.classList.remove('hidden');
-}
+meteorFall();
 
-// STELLE / METEORE CADUTA INFINITA
+// -------- STELLE --------
 let stars = [];
 
 function startStars() {
@@ -33,33 +37,32 @@ function startStars() {
     stars.push({
       x: Math.random() * canvas.width,
       y: -10,
-      size: Math.random() * 3 + 2,
-      speed: Math.random() * 4 + 2
+      r: Math.random() * 2 + 1,
+      s: Math.random() * 4 + 2
     });
-  }, 100);
+  }, 80);
 
   animateStars();
 }
 
 function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let i = 0; i < stars.length; i++) {
-    let s = stars[i];
-    ctx.fillStyle = 'white';
+
+  for (let i = stars.length - 1; i >= 0; i--) {
+    const star = stars[i];
+    ctx.fillStyle = "white";
     ctx.beginPath();
-    ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
     ctx.fill();
 
-    s.y += s.speed;
-    if (s.y > canvas.height) stars.splice(i, 1);
+    star.y += star.s;
+    if (star.y > canvas.height) stars.splice(i, 1);
   }
+
   requestAnimationFrame(animateStars);
 }
 
-meteorFall();
-
-// ADJUST CANVAS ON RESIZE
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+window.addEventListener("resize", () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
 });
