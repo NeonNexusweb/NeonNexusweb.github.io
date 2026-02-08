@@ -1,4 +1,51 @@
-/* ===== PARAGRAFO PIÙ PICCOLO ===== */
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+  background: black;
+}
+
+/* ===== PAGE CONTENITORE ===== */
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  text-align: center;
+  background: radial-gradient(circle at top, #111 0%, #000 70%);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ===== STELLE CADENTI ===== */
+.falling-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== TITOLI ===== */
+.page h1 {
+  font-size: 44px;
+  color: red;
+  text-shadow: 0 0 25px red;
+  margin-bottom: 20px;
+}
+
+/* ===== PARAGRAFO ===== */
 .smaller-text {
   font-size: 16px;
   line-height: 1.6;
@@ -7,6 +54,14 @@
   margin-bottom: 25px;
   max-width: 600px;
   text-align: center;
+}
+
+/* ===== MEMBRI ===== */
+.members {
+  font-size: 24px;
+  color: red;
+  margin-bottom: 30px;
+  text-shadow: 0 0 15px red;
 }
 
 /* ===== CARD GIVEAWAY ===== */
@@ -52,18 +107,27 @@
   transform: scale(1.08);
 }
 
-/* ===== PAGE CONTENITORE ===== */
-.page {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px 20px;
-  text-align: center;
-  background: radial-gradient(circle at top, #111 0%, #000 70%);
-  overflow: hidden;
-  z-index: 1;
+/* ===== STELLE CADENTI DECORATIVE (optional glow) ===== */
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  inset: -200%;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 60%, white 50%, transparent 51%),
+    radial-gradient(2px 2px at 40% 80%, white 50%, transparent 51%);
+  background-size: 450px 450px;
+  animation: starsMove 80s linear infinite;
+  opacity: 0.15;
+}
+
+.page::after {
+  animation-duration: 120s;
+  opacity: 0.1;
+}
+
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to   { transform: translateY(50%); }
 }
